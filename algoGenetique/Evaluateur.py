@@ -1,4 +1,4 @@
-from algoGenetique.Individu import Individu
+from individu import Individu
 
 
 class Evaluateur():

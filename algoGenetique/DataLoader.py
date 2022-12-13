@@ -1,4 +1,4 @@
-from algoGenetique.job import Job
+from job import Job
 
 class DataLoader():
     def __init__(self, data_filename):

@@ -1,14 +1,13 @@
-# test
 import random
-from algoGenetique.Evaluateur import Evaluateur
-from algoGenetique.Individu import Individu
+from evaluateur import Evaluateur
+from individu import Individu
 
 
 class Population():
     
     # n : taille de la population
     def __init__(self, n: int, sequence: list):
-        if self.n % 2 == 0:
+        if n % 2 == 0:
             self.n = n
         else:
             self.n = n+1
@@ -19,10 +18,11 @@ class Population():
         
     
     def generer(self):
-        self.individus = [None for _ in range(self.n)];
+        self.individus = [];
         
         for _ in range(0, self.n):
-            sequence = self.sequence #### À MODIFIER ####
+            sequence = self.sequence[:]
+            random.shuffle(sequence)
             i = Individu(sequence)
             self.ajouter_individu(i)
         
@@ -36,7 +36,7 @@ class Population():
         individus_melanges = self.individus[:]
         random.shuffle(individus_melanges)
         
-        for k in range(0, self.n/2):
+        for k in range(0, int(self.n/2)):
             parents.append((individus_melanges[2*k], individus_melanges[2*k+1]))
         
         self.parents = parents;
@@ -44,9 +44,18 @@ class Population():
     def faire_enfants(self):
         enfants = []
         for parents in self.parents:
+            nouveaux_enfants = parents[0].faire_enfant(parents[1])
+            enfants.append(nouveaux_enfants)
+            self.individus += [nouveaux_enfants[0], nouveaux_enfants[1]]
             
+        self.enfants = enfants;
     
     def selectionner(self): #### À MODIFIER ####
         evaluations = []
         for indiv in self.sequence:
             evaluations.append((Evaluateur(indiv)).evaluer())
+            
+            
+    def afficher(self):
+        for indiv in self.individus:
+            indiv.afficher()
