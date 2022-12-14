@@ -49,6 +49,14 @@ class Population():
             self.individus += [nouveaux_enfants[0], nouveaux_enfants[1]]
             
         self.enfants = enfants;
+        
+    def muter(self, seuil: int):
+        for (enfant1, enfant2) in self.enfants:
+            enfant1.muter(seuil)
+            enfant2.muter(seuil)
+    
+    def evaluer(self): #### À MODIFIER ####
+        return 0
     
     def selectionner(self): #### À MODIFIER ####
         evaluations = []

@@ -11,15 +11,15 @@ liste_jobs = (DataLoader("algoGenetique/jeu1.txt")).get_liste_jobs()
 c = 0
 CMAX = 1000
 
-pop = Population(N, liste_jobs)
-pop.generer()
-pop.associer()
-pop.faire_enfants()
-pop.muter(0.1)
-
-#pop.enfants[0].afficher()
-
+pop = Population(N, liste_jobs) # OK
+pop.generer() # OK
+pop.associer() # OK
+pop.faire_enfants() # Modifier le croisement de gênes
 pop.afficher()
+pop.muter(0.1) # OK
+pop.evaluer() # à faire
+
+# pop.afficher()
 
 # while c < CMAX:
 #     c += 1
