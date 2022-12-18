@@ -4,6 +4,8 @@ class DataLoader():
     def __init__(self, data_filename):
         self.definir_par_fichier(data_filename)
         
+    # definir_par_fichier permet de récupérer le jeu de données à partir d'un fichier
+    # Code par Chams Lalhou pour l'UE OREO
     def definir_par_fichier(self, nom):
         """ crée un problème de flowshop à partir d'un fichier """
         # ouverture du fichier en mode lecture
@@ -26,11 +28,14 @@ class DataLoader():
         # fermeture du fichier
         fdonnees.close()
         
+    # get_nombre_jobs retourne le nombre de jobs du jeu de données
     def get_nombre_jobs(self):
         return self.nombre_jobs
     
+    # get_nombre_machines retourne le nombre de machines du jeu de données
     def get_nombre_machines(self):
         return self.nombre_machines
     
+    # get_nombre_jobs retourne la liste des jobs du jeu de données
     def get_liste_jobs(self):
         return self.liste_jobs

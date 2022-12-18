@@ -1,38 +1,62 @@
+import heapq
 from multiprocessing import parent_process
-from dataLoader import DataLoader
-from population import Population
+import time
+from DataLoader import DataLoader
+from Population import Population
+from Evaluateur import Evaluateur
+import config
 
+print()
+print("*****************************************")
+print("* Bienvenue dans l'algorithme génétique *")
+print("*****************************************")
+print()
 
-print("Et c'est parti pour l'algo génétique")
+t_debut = time.perf_counter() 
+if config.AFFICHER_TEMPS_EXECUTION:
+    print("Début de l'exécution à 0s")
 
-N = 100 # Taille de la population
-liste_jobs = (DataLoader("algoGenetique/jeu1.txt")).get_liste_jobs()
+data = DataLoader(config.FICHIER_DONNEES)
+LISTE_JOBS = data.get_liste_jobs()
+N_MACHINES = data.get_nombre_machines()
 
-c = 0
-CMAX = 1000
+CMAX = config.CMAX
 
-pop = Population(N, liste_jobs) # OK
-pop.generer() # OK
-pop.associer() # OK
-pop.faire_enfants() # Modifier le croisement de gênes
-pop.afficher()
-pop.muter(0.1) # OK
-pop.evaluer() # à faire
+pop = Population(config.N, LISTE_JOBS)
+pop.generer()
 
-# pop.afficher()
-
-# while c < CMAX:
-#     c += 1
-#     pop.associer();
-#    pop.faire_enfants();
-#    pop.muter(niveau_probabilite);
-#    pop.evaluer();
+for c in range(CMAX):
+    if config.AFFICHER_POPULATION:
+        pop.afficher()
+    pop.associer()
+    pop.faire_enfants() # OK pour double coupe - Ajouter des types de croisements de gênes
+    if config.AFFICHER_POPULATION_APRES_NAISSANCE:
+        pop.afficher()
+    pop.muter(config.PROBABILITE_MUTATION_SEUIL_DEPART, config.PROBABILITE_MUTATION_DYNAMIQUE)
+    pop.evaluer(N_MACHINES)
+    pop.selectionner(config.SEUIL_SELECTION_MEILLEURS)
     
-# pop.afficher_meilleur()
+    if config.AFFICHER_MEILLEUR_A_CHAQUE_ITERATION:
+        h = [];
+        heapq.heapify(h)
+        for i in pop.individus:
+            heapq.heappush(h, (Evaluateur(i, N_MACHINES)))
 
-# 1- Créer la population avec N individus OK
-# 2- Faire des couples de parents - N indivs presque OK
-# 3- Faire les enfants - 2N indiv NOK
-# 4- Mutations - probabilite à x% de mutation
-# 5- Évaluation en vue de la sélection de N individus - N indivs
-# 6- On recommence
+        res = heapq.heappop(h)
+        print("[" + str(c + 1) + "] Meilleure séquence : ", [j.numero for j in res.get_individu().sequence], "avec une évaluation à ", res.evaluer())
+    
+    
+print()
+print("Conclusion :")
+h = [];
+heapq.heapify(h)
+for i in pop.individus:
+    heapq.heappush(h, (Evaluateur(i, N_MACHINES)))
+
+res = heapq.heappop(h)
+print("Meilleure séquence :", [j.numero for j in res.get_individu().sequence], "avec une évaluation à ", res.evaluer())
+
+if config.AFFICHER_TEMPS_EXECUTION:
+    print()
+    print("Fin de l'exécution à", str(round(time.perf_counter() - t_debut, 2)) + "s")
+    print()
