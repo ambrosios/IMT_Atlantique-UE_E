@@ -78,7 +78,7 @@ class Population():
             doublons = self.taux_doublons()
         
         if dynamique:
-            if doublons[1] > config.PROBABILITE_MUTATION_DYNAMIQUE_SEUIL:
+            if doublons[1] > config.MUTATION_DYNAMIQUE_SEUIL:
                 seuil_mutation = random.uniform(seuil, 1 - seuil + 0.01)
         
         if config.AFFICHER_NOMBRE_DOUBLONS:
