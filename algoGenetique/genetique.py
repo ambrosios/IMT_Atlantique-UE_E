@@ -1,62 +1,52 @@
 import heapq
 from multiprocessing import parent_process
 import time
+import numpy
 from DataLoader import DataLoader
 from Population import Population
 from Evaluateur import Evaluateur
+from Execution import Execution
 import config
 
-print()
-print("*****************************************")
-print("* Bienvenue dans l'algorithme génétique *")
-print("*****************************************")
-print()
-
-t_debut = time.perf_counter() 
-if config.AFFICHER_TEMPS_EXECUTION:
-    print("Début de l'exécution à 0s")
+if config.AFFICHER_NOM_ALGORITHME:
+    print()
+    print("*****************************************")
+    print("* Bienvenue dans l'algorithme génétique *")
+    print("*****************************************")
+    print()
 
 data = DataLoader(config.FICHIER_DONNEES)
 LISTE_JOBS = data.get_liste_jobs()
 N_MACHINES = data.get_nombre_machines()
 
-CMAX = config.CMAX
+best_evaluation = numpy.inf
+best_indiv = None
+temps_total = 0
 
-pop = Population(config.N, LISTE_JOBS)
-pop.generer()
+for e in range(config.NOMBRE_EXECUTIONS):
 
-for c in range(CMAX):
-    if config.AFFICHER_POPULATION:
-        pop.afficher()
-    pop.associer()
-    pop.faire_enfants() # OK pour double coupe - Ajouter des types de croisements de gênes
-    if config.AFFICHER_POPULATION_APRES_NAISSANCE:
-        pop.afficher()
-    pop.muter(config.PROBABILITE_MUTATION_SEUIL_DEPART, config.PROBABILITE_MUTATION_DYNAMIQUE)
-    pop.evaluer(N_MACHINES)
-    pop.selectionner(config.SEUIL_SELECTION_MEILLEURS)
+    if config.AFFICHER_TEMPS_EXECUTION:
+        print("Début de l'exécution " + str(e+1) + " à " + str(round(temps_total, 2)) + "s")
+
+    run = Execution(LISTE_JOBS, N_MACHINES)
+    run.executer(config.N, config.NOMBRE_ITERATIONS)
+    solution = run.get_solution()
+    print("  Meilleure séquence ("+str(e+1)+") :", solution[0].str(), "avec une évaluation à", solution[1])
+
+    if config.AFFICHER_TEMPS_EXECUTION:
+        print("Fin de l'exécution " + str(e+1) + " à", str(round(temps_total + run.get_temps(), 2)) + "s")
+        print("----")
+        print()
     
-    if config.AFFICHER_MEILLEUR_A_CHAQUE_ITERATION:
-        h = [];
-        heapq.heapify(h)
-        for i in pop.individus:
-            heapq.heappush(h, (Evaluateur(i, N_MACHINES)))
+    temps_total += run.get_temps()
 
-        res = heapq.heappop(h)
-        print("[" + str(c + 1) + "] Meilleure séquence : ", [j.numero for j in res.get_individu().sequence], "avec une évaluation à ", res.evaluer())
-    
-    
-print()
-print("Conclusion :")
-h = [];
-heapq.heapify(h)
-for i in pop.individus:
-    heapq.heappush(h, (Evaluateur(i, N_MACHINES)))
-
-res = heapq.heappop(h)
-print("Meilleure séquence :", [j.numero for j in res.get_individu().sequence], "avec une évaluation à ", res.evaluer())
+    if best_evaluation > solution[1]:
+        best_evaluation = solution[1]
+        best_indiv = solution[0]
 
 if config.AFFICHER_TEMPS_EXECUTION:
     print()
-    print("Fin de l'exécution à", str(round(time.perf_counter() - t_debut, 2)) + "s")
+    print("Fin de toutes les exécutions", str(round(temps_total, 2)) + "s")
     print()
+    
+print("Meilleur séquence résultat : " + best_indiv.str() + " avec une évaluation à " + str(best_evaluation))

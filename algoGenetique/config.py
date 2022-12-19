@@ -8,7 +8,9 @@ FICHIER_DONNEES = "algoGenetique/jeu2.txt" # Jeu de données avec nombre de jobs
 N = 50 # Taille de la population
 AFFICHER_AJUSTEMENT_TAILLE_POPULATION = True # Indique si la taille de la population a été ajustée à N+1 (dans le cas où N impair)
 
-CMAX = 100 # Nombre d'itérations
+NOMBRE_ITERATIONS = 100 # Nombre d'itérations par exécution de l'algorithme génétique
+
+NOMBRE_EXECUTIONS = 200
 
 PROBABILITE_MUTATION_FONCTION = random.uniform # Fonction aléatoire pour déterminer si un individu aura une mutation (ex : np.random.normal)
 PROBABILITE_MUTATION_SEUIL_DEPART = 0.2 # Probabilité pour un enfant de subir une mutation
@@ -17,6 +19,7 @@ MUTATION_DYNAMIQUE_SEUIL = 0.4 # Si un individu a un taux de présencé dans la 
 
 SEUIL_SELECTION_MEILLEURS = 0.6 # Taux de meilleurs individus conservés
 
+AFFICHER_NOM_ALGORITHME = True
 AFFICHER_AJUSTEMENT_TAILLE_POPULATION = True
 AFFICHER_POPULATION = False # Affiche la population à chaque itération
 AFFICHER_NOMBRE_DOUBLONS = False # Affiche la population à chaque itération
