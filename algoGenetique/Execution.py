@@ -10,6 +10,7 @@ class Execution():
         self.liste_jobs = liste_jobs
         self.nombre_machines = nombre_machines
         
+    # executer permet d'exécuter l'algorithme génétique pour une taille de population donnée et un nombre d'itérations choisi
     def executer(self, taille_population: int, nombre_iteration: int):
         t_debut = time.perf_counter() 
 
@@ -38,6 +39,7 @@ class Execution():
         
         self.temps = round(time.perf_counter() - t_debut, 2)
     
+    # get_solution permet de récupérer la solution optimale (locale) pour l'exécution réalisée
     def get_solution(self):
         h = [];
         heapq.heapify(h)
@@ -47,6 +49,7 @@ class Execution():
         
         return res.get_individu(), res.evaluer()
     
+    # get_temps retourne le temps qui a été nécessaire pour trouver une solution optimale localement (temps d'exécution)
     def get_temps(self):
         return self.temps
     
