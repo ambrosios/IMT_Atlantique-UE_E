@@ -1,7 +1,7 @@
 import heapq
 import random
-from Evaluateur import Evaluateur
-from Individu import Individu
+from classes.Evaluateur import Evaluateur
+from classes.Individu import Individu
 import config
 
 # Une instance de Population correspond à un ensemble d'ordonnancement (Individus)

@@ -2,15 +2,15 @@ import random
 import numpy as np
 
 
-FICHIER_DONNEES = "algoGenetique/jeu2.txt" # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
+FICHIER_DONNEES = "algoGenetique/data/jeu2.txt" # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
 
 
-N = 50 # Taille de la population
+N = 100 # Taille de la population
 AFFICHER_AJUSTEMENT_TAILLE_POPULATION = True # Indique si la taille de la population a été ajustée à N+1 (dans le cas où N impair)
 
-NOMBRE_ITERATIONS = 300 # Nombre d'itérations par exécution de l'algorithme génétique
+NOMBRE_ITERATIONS = 200 # Nombre d'itérations par exécution de l'algorithme génétique
 
-NOMBRE_EXECUTIONS = 10
+NOMBRE_EXECUTIONS = 100
 
 PROBABILITE_MUTATION_FONCTION = random.uniform # Fonction aléatoire pour déterminer si un individu aura une mutation (ex : np.random.normal)
 PROBABILITE_MUTATION_SEUIL_DEPART = 0.2 # Probabilité pour un enfant de subir une mutation
@@ -28,5 +28,5 @@ AFFICHER_CORRECTIONS = False # Affiche la correction avec avant/après
 AFFICHER_MUTATIONS = False # Affiche les mutations réalisées
 AFFICHER_EVALUATIONS = False # Affiche la valeur de l'évaluation de tous les individus de la population
 AFFICHER_SELECTIONNES = False # Affiche les individus sélectionné et leur évaluation
-AFFICHER_MEILLEUR_A_CHAQUE_ITERATION = True # Affiche la progression du meilleur individu de la population
+AFFICHER_MEILLEUR_A_CHAQUE_ITERATION = False # Affiche la progression du meilleur individu de la population
 AFFICHER_TEMPS_EXECUTION = True # Affiche le temps nécessaire pour finir l'évaluation

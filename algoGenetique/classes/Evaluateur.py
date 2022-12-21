@@ -1,5 +1,5 @@
-from Individu import Individu
-from ordonnancement import Ordonnancement
+from classes.Individu import Individu
+from classes.Ordonnancement import Ordonnancement
 
 # Une instance de Evaluateur permet d'évaluer un individu
 # Un Evaluateur permet de :

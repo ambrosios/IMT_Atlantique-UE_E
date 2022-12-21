@@ -1,8 +1,8 @@
 import numpy
-from DataLoader import DataLoader
-from Population import Population
-from Evaluateur import Evaluateur
-from Execution import Execution
+from classes.DataLoader import DataLoader
+from classes.Population import Population
+from classes.Evaluateur import Evaluateur
+from classes.Execution import Execution
 import config
 
 if config.AFFICHER_NOM_ALGORITHME:

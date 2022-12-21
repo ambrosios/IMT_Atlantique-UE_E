@@ -7,7 +7,7 @@ __coauthor__ = 'Amaury Colin'
 __date__ = 'Octobre 2019 - décembre 2022'
 __version__ = '0.2'
 
-import job
+import classes.job
 
 class Ordonnancement():
 

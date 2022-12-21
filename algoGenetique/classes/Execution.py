@@ -1,8 +1,8 @@
 import config
 import time
 import heapq
-from Population import Population
-from Evaluateur import Evaluateur
+from classes.Population import Population
+from classes.Evaluateur import Evaluateur
 
 class Execution():
     

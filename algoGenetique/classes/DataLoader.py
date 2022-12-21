@@ -1,4 +1,4 @@
-from job import Job
+from classes.job import Job
 
 class DataLoader():
     def __init__(self, data_filename):
