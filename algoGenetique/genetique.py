@@ -1,6 +1,3 @@
-import heapq
-from multiprocessing import parent_process
-import time
 import numpy
 from DataLoader import DataLoader
 from Population import Population

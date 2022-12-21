@@ -78,7 +78,7 @@ class Ordonnancement():
         self.ordonnancer_liste_job(liste_jobs);
         return self;
     
-    def getDuree(self):
+    def get_duree(self):
         for i in range(self.nombre_machines):
             if self.duree < self.date_disponibilite[i]:
                 self.duree = self.date_disponibilite[i];

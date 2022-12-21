@@ -89,7 +89,7 @@ class Population():
             enfant2.muter(seuil_mutation)
     
     # taux_doublons détermine l'individu qui est le plus présent dans la population ainsi que son nombre d'occurrence
-    def taux_doublons(self):
+    def taux_doublons(self) -> tuple[float, list]:
         indiv_en_doublon = None
         nombre_indiv_en_doublon_max = 0
         
@@ -102,7 +102,7 @@ class Population():
         return (nombre_indiv_en_doublon_max, nombre_indiv_en_doublon_max / len(self.individus), indiv_en_doublon)
     
     # nombre_doublon_individu détermine le nombre d'occurrence d'un individu dans la population
-    def nombre_doublon_individu(self, individu):
+    def nombre_doublon_individu(self, individu) -> int:
         c = 0
         for indiv in self.individus:
             identique = True
