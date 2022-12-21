@@ -1,73 +1,26 @@
-# Hello World
+# UE E - Résolution Approchée
 
-## Explication de git et github
+**Groupe :** Daniel BALLESTEROS, Amaury COLIN, Thibault LE ROY, Yann LEGENDRE
 
-<span style="color:green">**Définition Git :**</span> logiciel de gestion de versions décentralisé.
+**Langage de programmation :** Python
 
-<span style="color:blue">**Définition GitHub :**</span> service en ligne qui permet d'héberger des dépôts ou repo Git.
+## Objectif de l'exercice
 
-### Principe de git
-- on réalise les modifications un peu comme un arbre : quand on souhaite apporter une modification majeure ou réaliser un test, on peut créer une nouvelle branche. Les modifications qui seront réalisées sur cette branche ne seront pas reportées sur les autres.
-- On peut créer des branches de branches.
-- Lorsque la modification est ok, on peut la fusionner avec la branche dont elle découle. On parle alors de *merge*.
-- On travaille localement dans le working directory. Lorsqu’on fait des modifications, on doit les indexer (*add*) puis créer une version (*commit*). Finalement, on pourra mettre en ligne (*push*).
+Déterminer avec des méthodes approchées la résolution optimale pour un flowshop de permutation.
 
-![Illustration relation git/github](https://user.oc-static.com/upload/2021/10/05/16334576106761_image27.png)
+Le jeu de données est donné en entrée sous la forme d'un fichier texte qui contient les durées des opérations pour chaque job sur chaque machine.
 
-### Commandes utiles
-- créer une nouvelle branche :
-    
- 		$ git branch <nom de la branche>
-        
-- Lister les branches :
+### Algorithmes mis en place
 
-		$ git branch
-		
-- Se placer sur une branche :
-        
-        $ git checkout <nom de la branche>
-        
-- Vérifier les indexations : 
-        
-        $ git status 
-        
-- Indexer un élément : 
-        
-        $ git add <nom élément>
-        
-- Indexer tous les éléments non indexés : 
-        
-        $ git add -A
-        
-- Créer une version : 
-        
-        $ git commit -m ”<description de la version”
-        
-- Envoyer le commit sur le repo distant : 
-        
-        $ git push
-        
-- Récupérer un repo distant : 
-        
-        $ git clone <url du repo distant>
+* Algorithme tabou
+* Algorithme recuit simulé
+* Algorithme génétique
 
-- Voir les branches distantes
-        
-        $ git branch -r
+## Algorithme génétique
 
-- Changer de branche pour une branche distante
-        
-        $ git switch <nom branche distante>
+Pour exécuter l'algorithme, il faut s'assurer d'avoir numpy d'installé dans son environnement Python.
 
-- Fusionner une branche : 
-        
-        $ git branch <branche à fusionner sur la branche courante>
-        
-- Récupérer la maj de la branche depuis le repo distant : 
-        
-        $ git pull
-        
-- Revenir sur un commit passé (reset) : 
-        
-        $ git reset
+Pour lancer l'exécution, après le paramétrage effectué dans le fichier *config.py*, il faut exécuter le fichier suivant.
+
+		genetique.py
 
