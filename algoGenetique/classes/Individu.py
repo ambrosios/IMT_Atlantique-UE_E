@@ -37,20 +37,25 @@ class Individu():
     # corriger corrige les doublons de jobs en remplaçant la première instance d'un job en double par un job non présent dans la séquence
     def corriger(self, liste_jobs_initiale: list):
         
-        # print("corr_debut", [j.numero for j in self.sequence])
+        # On souhaite remplacer les jobs en double (la première occurrence) par un job absent
+        
         jobs_de_sequence = []
         jobs_en_double = []
+        
+        # Quels sont les jobs qui sont en double
         for job in self.sequence:
             if not(job in jobs_de_sequence):
                 jobs_de_sequence.append(job)
             else:
                 jobs_en_double.append(job)
         
+        # Quels sont les jobs qui sont absents
         jobs_absents = []
         for job in liste_jobs_initiale:
             if job not in self.sequence:
                 jobs_absents.append(job)
         
+        # On remplace les jobs en double (la première occurrence) par un job absent
         if len(jobs_en_double) != 0:
             c = 0
             for job in jobs_en_double:
@@ -61,8 +66,7 @@ class Individu():
                             self.sequence[k] = jobs_absents[c]
                             c += 1
                             change = True
-    
-        # print("corr_fin", [j.numero for j in self.sequence])
+                            
     
     # muter réalise une mutation de l'individu par rapport à un seuil donné
     def muter(self, seuil: float):
