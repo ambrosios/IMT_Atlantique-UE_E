@@ -23,7 +23,7 @@ def definir_par_fichier(self, nom):
 """
 print(3)
 
-print('test push')
+print('test push 2')
 
 def f(x): #fonction d'evaluation, x est une liste
     res = 0
