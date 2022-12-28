@@ -71,7 +71,7 @@ class Population():
         
     # muter expose les enfants à des mutations
     # la mutation dynamique est appliquée lorsqu'il y a trop d'individus identiques dans la population. Elle augmente la probabilité d'avoir des mutations sur les enfants.
-    def muter(self, seuil: int, dynamique: bool):
+    def muter(self, seuil: int, dynamique: bool, k_iteration: int):
         seuil_mutation = seuil
         
         if config.AFFICHER_NOMBRE_DOUBLONS or dynamique:
@@ -80,6 +80,10 @@ class Population():
         if dynamique:
             if doublons[1] > config.MUTATION_DYNAMIQUE_SEUIL:
                 seuil_mutation = random.uniform(seuil, 1 - seuil + 0.01)
+                
+                if config.AFFICHER_QUAND_MUTATION_DYNAMIQUE:
+                    print("La mutation dynamique a été activée à l'itération", k_iteration, "avec un seuil de probabilité fixé à", round(seuil_mutation, 2))
+                    
         
         if config.AFFICHER_NOMBRE_DOUBLONS:
             print("L'individu le plus répété est", doublons[2].liste_job(), ": ", doublons[0], "/", len(self.individus), "=", doublons[1]*100, "%")

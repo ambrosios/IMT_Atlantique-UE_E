@@ -45,6 +45,7 @@ Ainsi, il est possible de paramétrer :
 	* Afficher les évaluations des individus de la population (*AFFICHER_EVALUATIONS*)
 	* Afficher les individus sélectionnés (*AFFICHER_SELECTIONNES*)
 	* Afficher le meilleur individu à chaque itération (*AFFICHER\_MEILLEUR\_A\_CHAQUE_ITERATION*)
+	* Afficher le graphique de la progression de chaque recherche (*AFFICHER_GRAPHIQUE*)
 	* Afficher le temps d'exécution pour trouver un optimum local (*AFFICHER\_TEMPS_EXECUTION*)
 
 	
