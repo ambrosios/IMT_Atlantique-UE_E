@@ -43,12 +43,6 @@ class Execution():
                     print("[" + str(c + 1) + "] Meilleure séquence : ", [j.numero for j in res.get_individu().sequence], "avec une évaluation à ", res.evaluer())
         
         self.temps = round(time.perf_counter() - t_debut, 2)
-        
-        # if config.AFFICHER_GRAPHIQUE:
-        #     plt.figure()
-        #     plt.title("Évolution de la recherche de solutions")
-        #     plt.plot(self.meilleurs)
-        #     plt.show()
     
     # get_solution permet de récupérer la solution optimale (locale) pour l'exécution réalisée
     def get_solution(self):
