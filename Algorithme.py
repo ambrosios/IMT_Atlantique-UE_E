@@ -1,5 +1,5 @@
-import job
-import ordonnancement
+#import Job
+#import Ordonnancement
 import math as m
 
 class Algorithme():
@@ -72,6 +72,7 @@ def ordre_NEH(self):
 
 
 def f(x): #fonction d'evaluation, x est une liste
+    pass
 
 def voisinage(s):
     size=len(s)
@@ -84,15 +85,14 @@ def voisinage(s):
         voisins.append(new)
     return voisins
 
-def best(liste,tabou_liste):
-    best_duree=m.inf
-    best_element=null
+def best(liste,tabou_liste, best_valeur):
+    liste_couples=[] #liste des couples (element, valeur)
     for element in liste:
-        duree = evaluer(element)
-        if duree<best_duree and element not in tabou_liste:
-            best_duree=duree
-            best_element=element
-    return best_element, best_duree
+        liste_couples.append((element, evaluer(element)))
+    liste_triee = sorted(liste_couples, key=lambda couple: couple[1])
+    for couple in liste_triee:
+        if couple[1]<best_valeur or couple[0] not in tabou_liste:
+            return couple
 
 def evaluer(liste):
     ordonnancement.Ordonnancement(prob.nombre_machines)
@@ -100,17 +100,23 @@ def evaluer(liste):
     return o.duree
 
 def tabou(self):
-    iter_max=30 #nombre d'iterartions max
+    iter_max=30 #nombre d'iterations max
     current_list = prob.ordreNEH #heuristique
     best_list = current_list #meilleure solution
+    best_duree = evaluer(best_list)
     tabou_liste = [sc] #liste des tabous
     critere = True
     while not critere:
         voisins = voisinage(current_list)
-        current_list, current_duree = best(voisins) #best voisin de sc
-        if current_duree<evaluer(best_liste):
+        current_list, current_duree = best(voisins, tabou_liste, best_duree) #best voisin de sc
+        if current_duree<best_duree:
             sb = sc
-        tabou_liste.append(sc)
+            best_duree = current_duree
+        if current_list not in tabou_liste:
+            tabou_liste.append(current_list)
+        if len(tabou_liste)>10:
+            tabou_liste.pop(0) #tabou_liste est un FIFO
+
 
 # Pour tester
 if __name__ == "__main__":
