@@ -13,5 +13,5 @@ def best(liste,tabou_liste):
 
     return triee
 
-""" l=['tt','ijhkbh','uhbu']
-print(best(l,[])) """
+l=['tt','ijhkbh','uhbu']
+print(best(l,[]))
