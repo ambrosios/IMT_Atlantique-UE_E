@@ -59,7 +59,8 @@ class Recuit():
             self.c += 1
             
             if nouveau_Sc:
-                self.voisinage = self.voisinage + self.Sc.get_voisinage()
+                # self.voisinage = self.voisinage + self.Sc.get_voisinage()
+                self.voisinage = self.Sc.get_voisinage()
                 nouveau_Sc = False
                 
             s = self.get_dans_voisinage(self.Sc)
