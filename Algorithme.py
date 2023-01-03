@@ -67,16 +67,10 @@ class Algorithme():
                         best_date = date_de_fin
                         best_liste = l_test                
                     l_test=l_opt.copy()
-                l_opt=best_liste.copy()
-                
-                    
+                l_opt=best_liste.copy()                   
             return l_opt
 
-
-    def f(x): #fonction d'evaluation, x est une liste
-        pass
-
-    def voisinage(self,s):
+    def voisinage2(self,s):
         size=len(s)
         voisins=[]
         for i in range(size-1):
@@ -87,6 +81,18 @@ class Algorithme():
             voisins.append(new)
         return voisins
 
+    def voisinage(self,s):
+        size=len(s)
+        voisins=[]
+        for i in range(size-1):
+            for j in range(i,size):
+                new=s.copy()
+                temporaire=new[i]
+                new[i]=new[j]
+                new[j]=temporaire
+                voisins.append(new)
+        return voisins
+
     def best(self,liste,tabou_liste, best_valeur):
         liste_couples=[] #liste des couples (element, valeur)
         for element in liste:
@@ -95,14 +101,15 @@ class Algorithme():
         for couple in liste_triee:
             if couple[1]<best_valeur or couple[0] not in tabou_liste:
                 return couple
+        return liste_triee[0]
 
     def evaluer(self,liste):
-        ordonnancement.Ordonnancement(prob.nombre_machines)
+        o=ordonnancement.Ordonnancement(prob.nombre_machines)
         o.ordonnancer_liste_job(liste)
         return o.duree
 
     def tabou(self):
-        iter_max=50000 #nombre d'iterations max
+        iter_max=30 #nombre d'iterations max
         bar = PixelBar('Loading', suffix='%(percent)d%%', max=iter_max)       
 
         o = ordonnancement.Ordonnancement(prob.nombre_machines)

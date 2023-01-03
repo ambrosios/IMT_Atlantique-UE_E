@@ -70,9 +70,9 @@ if __name__ == "__main__":
     l = [a,b,c,d]
     ordo = Ordonnancement(5)
     ordo.ordonnancer_liste_job(l)
-    ordo.afficher()
+    """ ordo.afficher()
     a.afficher()
     b.afficher()
     c.afficher()
-    d.afficher()
+    d.afficher() """
     
