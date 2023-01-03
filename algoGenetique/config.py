@@ -10,7 +10,7 @@ AFFICHER_AJUSTEMENT_TAILLE_POPULATION = True # Indique si la taille de la popula
 
 NOMBRE_ITERATIONS = 30 # Nombre d'itérations par exécution de l'algorithme génétique
 
-NOMBRE_EXECUTIONS = 10
+NOMBRE_EXECUTIONS = 3
 
 PROBABILITE_MUTATION_FONCTION = random.uniform # Fonction aléatoire pour déterminer si un individu aura une mutation (ex : np.random.normal)
 PROBABILITE_MUTATION_SEUIL_DEPART = 0.2 # Probabilité pour un enfant de subir une mutation
