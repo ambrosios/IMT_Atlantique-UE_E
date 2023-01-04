@@ -1,4 +1,4 @@
-DONNEES_INITIALES = "recuit/donnees/jeu2.txt"
+DONNEES_INITIALES = "recuit/donnees/tai01.txt"
 
 NOMBRE_ITERATIONS = 300
 

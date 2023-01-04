@@ -69,8 +69,8 @@ class Recuit():
                 print("Solution considérée :", s.str())
             
             if s.get_duree() < self.Sc.get_duree():
-                self.S_star = s
-                # self.Sc = s
+                # self.S_star = s
+                self.Sc = s
                 
                 if config.AFFICHAGE_VOISIN_CHOISI:
                     print("Solution considérée :", s.str())
@@ -88,15 +88,15 @@ class Recuit():
                     nouveau_Sc = True
                     self.Sc = s
                     
-                if self.Sc.get_duree() < self.S_star.get_duree():
-                    self.stats['Ajustement Sc meilleur'] += 1
-                    
-                    self.S_star = self.Sc
-                    
-                self.T = self.T - config.ALPHA*self.T
+            if self.Sc.get_duree() < self.S_star.get_duree():
+                self.stats['Ajustement Sc meilleur'] += 1
                 
-                if self.c <= config.AFFICHAGE_T:
-                    print("Valeur de T à l'itération", self.c, ":", self.T)
+                self.S_star = self.Sc
+                    
+            self.T = self.T - config.ALPHA*self.T
+
+            if self.c <= config.AFFICHAGE_T:
+                print("Valeur de T à l'itération", self.c, ":", self.T)
                 
         if config.AFFICHAGE_RESULTAT:
             self.afficher_resultat()
