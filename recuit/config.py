@@ -1,6 +1,6 @@
-DONNEES_INITIALES = "recuit/donnees/tai01.txt"
+DONNEES_INITIALES = "recuit/donnees/tai11.txt"
 
-NOMBRE_ITERATIONS = 300
+NOMBRE_ITERATIONS = 3000
 
 ALPHA = .001
 

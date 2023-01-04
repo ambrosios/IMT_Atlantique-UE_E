@@ -69,9 +69,6 @@ class Recuit():
                 # self.S_star = s
                 self.Sc = s
                 
-                if config.AFFICHAGE_VOISIN_CHOISI:
-                    print("Solution considérée :", s.str())
-                
                 self.stats['Voisin meilleur'] += 1
                 
             else:
