@@ -53,15 +53,12 @@ class Recuit():
 
     def executer(self):
         self.c = 0
-        nouveau_Sc = True
         while not(self.critere_arret()):
             
             self.c += 1
             
-            if nouveau_Sc:
-                # self.voisinage = self.voisinage + self.Sc.get_voisinage()
-                self.voisinage = self.Sc.get_voisinage()
-                nouveau_Sc = False
+            self.voisinage = self.Sc.get_voisinage()
+                
                 
             s = self.get_dans_voisinage(self.Sc)
         
@@ -79,13 +76,11 @@ class Recuit():
                 
             else:
                 
-                self.stats['Ajustement de température'] += 1
                 
                 p = random.uniform(0, 1)
                 if p <= exp((self.Sc.get_duree() - s.get_duree())/(constants.k * self.T)):
                     self.stats['Ajustement de Sc'] += 1
                     
-                    nouveau_Sc = True
                     self.Sc = s
                     
             if self.Sc.get_duree() < self.S_star.get_duree():
@@ -94,6 +89,7 @@ class Recuit():
                 self.S_star = self.Sc
                     
             self.T = self.T - config.ALPHA*self.T
+            self.stats['Ajustement de température'] += 1
 
             if self.c <= config.AFFICHAGE_T:
                 print("Valeur de T à l'itération", self.c, ":", self.T)
