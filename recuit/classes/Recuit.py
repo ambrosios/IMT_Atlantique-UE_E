@@ -23,9 +23,11 @@ class Recuit():
              "Temps d'exécution (s)": 0
             }
     voisinage = []
+    liste_temps_S_star = []
     
     def __init__(self):
-                
+
+        self.liste_temps_S_star = []  
         self.N_execution = config.NOMBRE_ITERATIONS
         
         self.T = 1
@@ -40,6 +42,7 @@ class Recuit():
         self.heuristique = Flowshop(self.Sc.liste_jobs, self.nombre_machines)
         
         self.S_star = self.Sc
+        self.liste_temps_S_star.append(self.S_star.get_duree())
         
         if config.AFFICHAGE_NOM_ALGORITHME:
             self.afficher_nom()
@@ -84,6 +87,7 @@ class Recuit():
                 self.stats['Ajustement Sc meilleur'] += 1
                 
                 self.S_star = self.Sc
+            self.liste_temps_S_star.append(self.S_star.get_duree())
                     
             self.T = self.T - config.ALPHA*self.T
             self.stats['Ajustement de température'] += 1
