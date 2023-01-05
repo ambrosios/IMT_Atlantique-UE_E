@@ -30,7 +30,7 @@ class Execution():
             self.pop.evaluer(self.nombre_machines)
             self.pop.selectionner(config.SEUIL_SELECTION_MEILLEURS)
             
-            if config.AFFICHER_MEILLEUR_A_CHAQUE_ITERATION or config.AFFICHER_GRAPHIQUE:
+            if config.AFFICHER_MEILLEUR_A_CHAQUE_ITERATION or config.AFFICHER_GRAPHIQUE or config.SAUVEGARDE_RESULTATS:
                 h = [];
                 heapq.heapify(h)
                 for i in self.pop.individus:

@@ -132,9 +132,8 @@ class Population():
         self.evaluations = evaluations
     
     # selectionner sélectionne les individus les plus performants (dans la limite d'un taux de bons élèves) et complète avec d'autres individus choisis aléatoirement
-    def selectionner(self, taux_meilleurs: float):
+    def selectionner(self, nombre_meilleurs: float):
         selection = []
-        nombre_meilleurs = int(taux_meilleurs * self.n)
         nombre_moins_bons = self.n - nombre_meilleurs
         
         for _ in range(nombre_meilleurs):
