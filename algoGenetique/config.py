@@ -3,13 +3,13 @@ import numpy as np
 
 DATA = [
     # ["algoGenetique/data/jeu1.txt", 50, 50, 3, "algoGenetique/resultats/jeu1.png", "algoGenetique/resultats/jeu1.txt"],
-    # ["algoGenetique/data/jeu2.txt", 50, 70, 6, "algoGenetique/resultats/jeu2.png", "algoGenetique/resultats/jeu2.txt"],
+    ["algoGenetique/data/jeu2.txt", 50, 70, 6, "algoGenetique/resultats/jeu2.png", "algoGenetique/resultats/jeu2.txt"],
     # ["algoGenetique/data/tai01.txt", 100, 220, 30, "algoGenetique/resultats/tai01.png", "algoGenetique/resultats/tai01.txt"],
     # ["algoGenetique/data/tai11.txt", 100, 300, 30, "algoGenetique/resultats/tai11.png", "algoGenetique/resultats/tai11.txt"],
-    ["algoGenetique/data/tai21.txt", 200, 300, 20, "algoGenetique/resultats/tai21.png", "algoGenetique/resultats/tai21.txt"],
-    ["algoGenetique/data/tai31.txt", 200, 400, 20, "algoGenetique/resultats/tai31.png", "algoGenetique/resultats/tai31.txt"],
-    ["algoGenetique/data/tai41.txt", 200, 500, 15, "algoGenetique/resultats/tai41.png", "algoGenetique/resultats/tai41.txt"],
-    ["algoGenetique/data/tai51.txt", 200, 500, 15, "algoGenetique/resultats/tai51.png", "algoGenetique/resultats/tai51.txt"]
+    # ["algoGenetique/data/tai21.txt", 200, 300, 20, "algoGenetique/resultats/tai21.png", "algoGenetique/resultats/tai21.txt"],
+    # ["algoGenetique/data/tai31.txt", 200, 400, 20, "algoGenetique/resultats/tai31.png", "algoGenetique/resultats/tai31.txt"],
+    # ["algoGenetique/data/tai41.txt", 200, 500, 15, "algoGenetique/resultats/tai41.png", "algoGenetique/resultats/tai41.txt"],
+    # ["algoGenetique/data/tai51.txt", 200, 500, 15, "algoGenetique/resultats/tai51.png", "algoGenetique/resultats/tai51.txt"]
     ]
 
 FICHIERS_DONNEES = [data[0] for data in DATA] # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
