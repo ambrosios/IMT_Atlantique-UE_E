@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 
-FICHIER_DONNEES = "data/data/tai11.txt" # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
+FICHIER_DONNEES = "algoGenetique/data/tai11.txt" # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
 
 
 N = 100 # Taille de la population
