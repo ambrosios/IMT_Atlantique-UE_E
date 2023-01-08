@@ -2,6 +2,7 @@ import job
 import ordonnancement
 import math as m
 import time as t
+import config
 from progress.bar import PixelBar
 
 class Algorithme():
@@ -109,8 +110,7 @@ class Algorithme():
         return o.duree
 
     def tabou(self):
-        iter_max=30 #nombre d'iterations max
-        bar = PixelBar('Loading', suffix='%(percent)d%%', max=iter_max)       
+        bar = PixelBar('Loading', suffix='%(percent)d%%', max=config.NOMBRE_ITERATIONS)       
 
         o = ordonnancement.Ordonnancement(prob.nombre_machines)
         current_list = prob.ordre_NEH() #heuristique
@@ -119,14 +119,14 @@ class Algorithme():
         tabou_liste = [current_list] #liste des tabous
         critere = True
         count = 0
-        while count<iter_max:
+        while count<config.NOMBRE_ITERATIONS:
             voisins = prob.voisinage(current_list)
             current_list, current_duree = prob.best(voisins, tabou_liste, best_duree) #best voisin de sc
             if current_duree<best_duree:
                 best_duree = current_duree
             if current_list not in tabou_liste:
                 tabou_liste.append(current_list)
-            if len(tabou_liste)>10:
+            if len(tabou_liste)>20:
                 tabou_liste.pop(0) #tabou_liste est un FIFO
             count+=1
             bar.next()
@@ -137,7 +137,9 @@ class Algorithme():
 # Pour tester
 if __name__ == "__main__":
 
-    print("JEU 1 :")
+    pass
+
+"""     print("JEU 1 :")
     prob = Algorithme()
     prob.definir_par_fichier("jeu1.txt")
     o = ordonnancement.Ordonnancement(prob.nombre_machines)
@@ -164,4 +166,6 @@ if __name__ == "__main__":
     print('ordre final :',resultat[0],'\n')
     t.sleep(1)
     print('duree minimale : ',resultat[1],'\n')
-    t.sleep(1)
+    t.sleep(1) """
+
+
