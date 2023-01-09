@@ -1,5 +1,5 @@
-import job
-import ordonnancement
+from  Classes.job import Job
+from Classes.ordonnancement import Ordonnancement
 import math as m
 import time as t
 import config
@@ -34,7 +34,7 @@ class Algorithme():
             # on transforme la suite de chaînes de caractères représentant
             # les durées des opérations en une liste d'entiers
             l = [int(i) for i in l]
-            j = job.Job(i, l)
+            j = Job(i, l)
             self.liste_jobs.append(j)
         # fermeture du fichier
         fdonnees.close()
@@ -59,7 +59,7 @@ class Algorithme():
                 best_liste = []
                 for i in range(len(l_opt)+1): #indice d'ajout de new_job dans l_test
                     l_test=l_opt[:i]+[new_job]+l_opt[i:]
-                    o = ordonnancement.Ordonnancement(prob.nombre_machines) #pas oublier de réinitialiser l'ordonnancement
+                    o = Ordonnancement(self.nombre_machines) #pas oublier de réinitialiser l'ordonnancement
                     o.ordonnancer_liste_job(l_test)
                     date_de_fin = o.duree
                     #print("bd : ",best_date)
@@ -97,7 +97,7 @@ class Algorithme():
     def best(self,liste,tabou_liste, best_valeur):
         liste_couples=[] #liste des couples (element, valeur)
         for element in liste:
-            liste_couples.append((element, prob.evaluer(element)))
+            liste_couples.append((element, self.evaluer(element)))
         liste_triee = sorted(liste_couples, key=lambda couple: couple[1])
         for couple in liste_triee:
             if couple[1]<best_valeur or couple[0] not in tabou_liste:
@@ -105,23 +105,24 @@ class Algorithme():
         return liste_triee[0]
 
     def evaluer(self,liste):
-        o=ordonnancement.Ordonnancement(prob.nombre_machines)
+        o=Ordonnancement(self.nombre_machines)
         o.ordonnancer_liste_job(liste)
         return o.duree
 
     def tabou(self):
-        bar = PixelBar('Loading', suffix='%(percent)d%%', max=config.NOMBRE_ITERATIONS)       
+        if config.AFFICHER_BARRE_DE_CHARGEMENT:
+            bar = PixelBar('Loading', suffix='%(percent)d%%', max=config.NOMBRE_ITERATIONS)       
 
-        o = ordonnancement.Ordonnancement(prob.nombre_machines)
-        current_list = prob.ordre_NEH() #heuristique
+        o = Ordonnancement(self.nombre_machines)
+        current_list = self.ordre_NEH() #heuristique
         best_list = current_list #meilleure solution
-        best_duree = prob.evaluer(best_list)
+        best_duree = self.evaluer(best_list)
         tabou_liste = [current_list] #liste des tabous
         critere = True
         count = 0
         while count<config.NOMBRE_ITERATIONS:
-            voisins = prob.voisinage(current_list)
-            current_list, current_duree = prob.best(voisins, tabou_liste, best_duree) #best voisin de sc
+            voisins = self.voisinage(current_list)
+            current_list, current_duree = self.best(voisins, tabou_liste, best_duree) #best voisin de sc
             if current_duree<best_duree:
                 best_duree = current_duree
             if current_list not in tabou_liste:
@@ -129,8 +130,10 @@ class Algorithme():
             if len(tabou_liste)>20:
                 tabou_liste.pop(0) #tabou_liste est un FIFO
             count+=1
-            bar.next()
-        bar.finish()
+            if config.AFFICHER_BARRE_DE_CHARGEMENT:
+                bar.next()
+        if config.AFFICHER_BARRE_DE_CHARGEMENT:
+            bar.finish()
         return best_list, best_duree
 
 
@@ -140,11 +143,11 @@ if __name__ == "__main__":
     pass
 
 """     print("JEU 1 :")
-    prob = Algorithme()
-    prob.definir_par_fichier("jeu1.txt")
-    o = ordonnancement.Ordonnancement(prob.nombre_machines)
+    self = Algorithme()
+    self.definir_par_fichier("jeu1.txt")
+    o = Ordonnancement(self.nombre_machines)
     debut = t.time()
-    resultat=prob.tabou()
+    resultat=self.tabou()
     fin=t.time()
     print('temps : ',fin-debut,"s\n")
     t.sleep(1)
@@ -155,11 +158,11 @@ if __name__ == "__main__":
     t.sleep(1)
 
     print("JEU 2 :")
-    prob = Algorithme()
-    prob.definir_par_fichier("jeu2.txt")
-    o = ordonnancement.Ordonnancement(prob.nombre_machines)
+    self = Algorithme()
+    self.definir_par_fichier("jeu2.txt")
+    o = Ordonnancement(self.nombre_machines)
     debut = t.time()
-    resultat=prob.tabou()
+    resultat=self.tabou()
     fin=t.time()
     print('temps : ',fin-debut,"s\n")
     print('resultat : ')   

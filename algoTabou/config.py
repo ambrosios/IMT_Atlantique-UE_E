@@ -2,16 +2,22 @@ import random
 import numpy as np
 
 
-MULTIPLE_FICHIERS_DONNEES = [('JEU 1',"algoTabou/data/jeu1.txt"), ('JEU 2',"algoTabou/data/jeu2.txt"), ('TAIL 01',"algoTabou/data/tai01.txt"), ('TAIL 11',"algoTabou/data/tai11.txt"), ('TAIL 21',"algoTabou/data/tai21.txt"), ('TAIL 31',"algoTabou/data/tai31.txt"), ('TAIL 41',"algoTabou/data/tai41.txt"), ('TAIL 51',"algoTabou/data/tai51.txt")]     # Jeus de données avec nombre de jobs, nombre de machines, durées de chaque opération
+MULTIPLE_FICHIERS_DONNEES = [('JEU 1',"data/jeu1.txt"), ('JEU 2',"data/jeu2.txt"), ('TAIL 01',"data/tai01.txt"), ('TAIL 11',"data/tai11.txt"), ('TAIL 21',"data/tai21.txt"), ('TAIL 31',"data/tai31.txt"), ('TAIL 41',"data/tai41.txt"), ('TAIL 51',"data/tai51.txt")]     # Jeus de données avec nombre de jobs, nombre de machines, durées de chaque opération
 
-FICHIER_DONNEES = "algoTabou/data/jeu1.txt"
+FICHIER_DONNEES = "data/jeu1.txt"
 
-MULTIPLE_JEUX = False
+MULTIPLE_JEUX = True
 
-NOMBRE_ITERATIONS = 30 # Nombre d'itérations par exécution de l'algorithme génétique
-NOMBRE_EXECUTIONS = 10
+NOMBRE_ITERATIONS = 70 # Nombre d'itérations par exécution de l'algorithme génétique
+
+
+AFFICHER_SOLUTIONS = False
+
+AFFICHER_BARRE_DE_CHARGEMENT = True
 
 """
+NOMBRE_EXECUTIONS = 10
+
 AFFICHER_AJUSTEMENT_TAILLE_POPULATION = True # Indique si la taille de la population a été ajustée à N+1 (dans le cas où N impair)
 
 PROBABILITE_MUTATION_FONCTION = random.uniform # Fonction aléatoire pour déterminer si un individu aura une mutation (ex : np.random.normal)

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 __author__ = 'Chams Lahlou'
 __date__ = 'Octobre 2019 - novembre 2020'
 __version__ = '0.2'

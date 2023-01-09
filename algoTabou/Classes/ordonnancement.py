@@ -6,7 +6,7 @@ __author__ = 'Chams Lahlou'
 __date__ = 'Octobre 2019 - janvier 2021'
 __version__ = '0.2'
 
-import job
+from Classes.job import Job
 
 class Ordonnancement():
 
