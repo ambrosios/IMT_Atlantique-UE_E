@@ -1,8 +1,11 @@
 import random
 import numpy as np
+import os
 
 
-FICHIER_DONNEES = "algoGenetique/data/tai11.txt" # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
+DATA_DIR = os.getcwd() + "/../data/"
+
+FICHIER_DONNEES = DATA_DIR + "tai11.txt" # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
 
 
 N = 100 # Taille de la population
