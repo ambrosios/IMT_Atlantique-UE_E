@@ -1,0 +1,1 @@
+Meilleur séquence résultat : [0, 1, 2, 3] avec une évaluation à 54
