@@ -1,6 +1,6 @@
 import os
 
-DATA_DIR = os.getcwd() + "/../data/"
+DATA_DIR = os.getcwd() + "/data/"
 
 DONNEES_INITIALES = DATA_DIR + "jeu2.txt"
 

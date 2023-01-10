@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 
-DATA_DIR = os.getcwd() + "/../data/"
+DATA_DIR = os.getcwd() + "/data/"
 
 FICHIER_DONNEES = DATA_DIR + "tai11.txt" # Jeu de données avec nombre de jobs, nombre de machines, durées de chaque opération
 
