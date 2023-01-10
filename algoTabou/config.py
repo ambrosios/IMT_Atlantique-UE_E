@@ -8,7 +8,7 @@ FICHIER_DONNEES = "data/jeu1.txt"
 
 MULTIPLE_JEUX = True
 
-NOMBRE_ITERATIONS = 70 # Nombre d'itérations par exécution de l'algorithme génétique
+NOMBRE_ITERATIONS = 300 # Nombre d'itérations par exécution de l'algorithme génétique
 
 
 AFFICHER_SOLUTIONS = False
