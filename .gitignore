@@ -1,6 +1,6 @@
-recuit/__pycache__
-recuit/classes/__pycache__
-algoGenetique/__pycache__/
-algoGenetique/classes/__pycache__/
-algoTabou/__pycache__/
-algoTabou/Classes/__pycache__/
+algoRecuit/__pycache__
+algoRecuit/classes/__pycache__
+algoGenetique/__pycache__
+algoGenetique/classes/__pycache__
+algoTabou/__pycache__
+algoTabou/Classes/__pycache__
